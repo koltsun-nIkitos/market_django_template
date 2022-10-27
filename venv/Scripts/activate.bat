@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\kolts\Desktop\market_djando_learn\venv"
+set "VIRTUAL_ENV=C:\Users\kolts\Desktop\django_market_template\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

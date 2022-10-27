@@ -9,7 +9,7 @@ def-env activate-virtualenv [] {
     }
 
     let is-windows = ((sys).host.name | str downcase) == 'windows'
-    let virtual-env = 'C:\Users\kolts\Desktop\market_djando_learn\venv'
+    let virtual-env = 'C:\Users\kolts\Desktop\django_market_template\venv'
     let bin = 'Scripts'
     let path-sep = ';'
     let path-name = if $is-windows {
@@ -89,4 +89,4 @@ def-env activate-virtualenv [] {
 activate-virtualenv
 
 alias pydoc = python -m pydoc
-alias deactivate = source 'C:\Users\kolts\Desktop\market_djando_learn\venv\Scripts\deactivate.nu'
+alias deactivate = source 'C:\Users\kolts\Desktop\django_market_template\venv\Scripts\deactivate.nu'

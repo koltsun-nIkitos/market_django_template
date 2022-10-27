@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <div class="general-container">
+        <div class="container top-container">
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <h1 class="title">Наш магазин скоро откроется! <br>
+                        Оставляйте Ваш имейл в форме ниже</h1>
+                    <div>
+                        <form action="" method="post" class="form-inline text-center">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <label for="email-input" class="form-label">Email:</label>
+                                <input type="email" name="{{ form.email.name }}" id="email-input" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <label for="name-input" class="form-label">Ваше имя:</label>
+                                <input type="text" name="{{ form.name.name }}" id="name-input" class="form-control">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-orange">Отправить</button>
+                        </form>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Bootstrap min js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
