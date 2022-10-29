@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
-class productsConfig(AppConfig): # Our app config class
+class productsConfig(AppConfig):
+    """ Приложение товары"""
     name = 'products'
     verbose_name = "Товары"

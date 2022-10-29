@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="section-top">
+        <img src="{% static 'img/slider/slider0.jpg' %}" alt="" class="img-responsive">
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="cards">
+                {% for product_image in products_images %}
+                    <div class="card">
+                        <div class="product-item">
+                            <div>
+                                <img src="{{ product_image.image.url }}" alt="img: product" class="img-responsive-cart">
+                            </div>
+                            <h4 class="product-name">{{ product_image.product.name|truncatechars_html:40 }}</h4>
+                            <p class="product-description">
+                                {{ product_image.product.short_decription|truncatechars_html:70 }}
+                            </p>
+
+                            <p class="product-price">
+                                {{ product_image.product.price }} ₽
+                            </p>
+
+                            <div class="add-to-cart-btn">
+                                <button class="button btn-success-add-cart">
+                                    Добавить в корзину
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

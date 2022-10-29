@@ -2,55 +2,133 @@ html, body{
     height: 100%;
     max-height: 100%;
     font-family: 'Roboto', sans-serif;
+    background-color: #edeef0;
 }
 
-form.form-inline{
+
+/* MAIN */
+
+/* slider */
+.section-top{
+    margin-bottom: 20px;
+}
+
+.img-responsive{
+    width: 100%;
+}
+
+/* products */
+.cards{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card{
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.product-item{
+    height: 565px;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 5%);
+    border-radius: 7px;
+}
+
+.img-responsive-cart{
+    max-width: 190px;
+    width: 100%;
+    max-height: 250px;
+    height: 250px;
+}
+
+.product-name{
+    height: 100%;
+    margin-top: 17px;
+    max-height: 70px;
+    overflow: hidden;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    color: #3757c5;
+}
+
+.product-description{
+    margin-bottom: 10px;
+    max-height: 80px;
+    height: 100%;
+    overflow: hidden;
+
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+}
+
+.product-price{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000;
+}
+
+.add-to-cart-btn{
+    position: absolute;
+    bottom: 17px;
+    left: 10%;
+    right: 10%;
+}
+
+.button{
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 0%);
+    border-radius: 2px;
+    color: #595959;
+    font-size: 16px;
+    line-height: 24px;
 }
 
-form .input-group{
-    margin-right: 5px;
-    align-items: center;
+.btn-success-add-cart{
+    background: #1890FF;
+    border: 1px solid #1890FF;
+    color: #fff;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.top-container{
-    padding-top: 10%;
+
+
+
+
+
+
+
+/* media */
+
+/* products */
+@media (max-width: 992px){
+    .card {
+        flex-basis: 49%;
+    }
 }
 
-.general-container{
-    background: url('img/bg.jpg');
-    height: 100%;
+@media (max-width: 578px){
+    .card {
+        flex-basis: 100%;
+    }
 }
-
-.general-container form{
-    margin-top: 30px;
-}
-
-.general-container form label{
-    font-weight: 100;
-    color: white;
-    margin-right: 10px;
-    margin: 0;
-    margin-right: 5px;
-}
-
-.btn-orange{
-    background-color: #e8643e;
-    border: none;
-    padding: 10px 20px;
-}
-
-.btn-orange:hover{
-    background-color: #dc5129;
-    border: none;
-}
-
-.title{
-    text-align: center;
-    color: white;
-    font-weight: 100;
-    line-height: 50px;
-}
-

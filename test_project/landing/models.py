@@ -1,6 +1,7 @@
 from django.db import models
 
 class Subscriber(models.Model):
+    """ Модель подписчика """
     email = models.EmailField()
     name = models.CharField("имя", max_length=120)
 
