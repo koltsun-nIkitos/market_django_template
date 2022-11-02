@@ -31,3 +31,11 @@ class ProductOrderAdmin(admin.ModelAdmin):
         model = ProductOrder
 
 admin.site.register(ProductOrder, ProductOrderAdmin)
+
+class ProductInBasketAdmin(admin.ModelAdmin):
+    """ Админка  списка товаров в корзине """
+    list_display = [field.name for field in ProductInBasket._meta.fields]
+    class Meta:
+        model = ProductInBasket
+
+admin.site.register(ProductInBasket, ProductInBasketAdmin)

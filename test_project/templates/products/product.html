@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                    {% for image_item in product.productimg_set.all %}
+                        <img src="{{ image_item.image.url }}" alt="{{ product.name }}" class="img-responsive image_detail">
+                    {% endfor %}
+            </div>
+
+            <div class="col-lg-6">
+                <h1 class="text-center">
+                    {{ product.name }}
+                </h1>
+                <div class="">
+                    <p>
+                        Цена: {{ product.price }} ₽
+                    </p>
+                </div>
+
+                <div class="">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs btn-group btn-group-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#description" aria-controls="home" role="tab" data-toggle="tab" class="btn btn-primary">
+                                Описание
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab"  class="btn btn-primary">
+                                Доставка
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="btn btn-primary">
+                                Messages
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" class="btn btn-primary">
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content product-description-tabs">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            {{ product.description|linebreaks }}
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="delivery">
+                            <h3>Как мы делаем доставку</h3>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <form id="form_buying_product" class="d-flex" action="{% url 'basket_adding' %}">
+                        {% csrf_token %}
+                        <input type="number" class="form-control" name="number" id="number">
+                    
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-buy" id="submit_btn" 
+                                data-product_id="{{ product.id }}"
+                                data-name = "{{ product.name }}"
+                                data-price = "{{ product.price }}"
+                            >
+                                Купить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+        
+    </div>
+{% endblock content %}

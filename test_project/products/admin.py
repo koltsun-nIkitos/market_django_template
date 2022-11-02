@@ -6,6 +6,14 @@ class ProductImgInline(admin.TabularInline):
     model = ProductImg
     extra = 0
 
+class ProductCategoryAdmin(admin.ModelAdmin):
+    """ Админка товаров """
+    list_display = [field.name for field in ProductCategory._meta.fields]
+    class Meta:
+        model = ProductCategory
+
+admin.site.register(ProductCategory, ProductCategoryAdmin)
+
 class ProductAdmin(admin.ModelAdmin):
     """ Админка товаров """
     list_display = [field.name for field in Product._meta.fields]

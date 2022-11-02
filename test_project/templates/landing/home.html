@@ -5,32 +5,56 @@
     <div class="section-top">
         <img src="{% static 'img/slider/slider0.jpg' %}" alt="" class="img-responsive">
     </div>
-    <div class="section">
+    <div class="section section1">
         <div class="container">
-            <div class="cards">
+            <div class="row cards">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        <span class="section-title">Новые поступления</span>
+                    </h1>
+                </div>
                 {% for product_image in products_images %}
-                    <div class="card">
-                        <div class="product-item">
-                            <div>
-                                <img src="{{ product_image.image.url }}" alt="img: product" class="img-responsive-cart">
-                            </div>
-                            <h4 class="product-name">{{ product_image.product.name|truncatechars_html:40 }}</h4>
-                            <p class="product-description">
-                                {{ product_image.product.short_decription|truncatechars_html:70 }}
-                            </p>
+                    {% include 'landing/product_item.html' %}
+                {% endfor %}
 
-                            <p class="product-price">
-                                {{ product_image.product.price }} ₽
-                            </p>
+            </div>
+        </div>
+    </div>
 
-                            <div class="add-to-cart-btn">
-                                <button class="button btn-success-add-cart">
-                                    Добавить в корзину
-                                </button>
-                            </div>
+    <div class="section section-delivery">
+        <div class="col-lg-12">
+            <h1 class="text-center">
+                <span class="section-title">Бесплатная доставка</span>
+            </h1>
+        </div>
+    </div>
 
-                        </div>
-                    </div>
+    <div class="section section2 phones-container">
+        <div class="container">
+            <div class="row cards">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        <span class="section-title">Телефоны</span>
+                    </h1>
+                </div>
+                {% for product_image in products_images_phones %}
+                    {% include 'landing/product_item.html' %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section section3 laptops-container">
+        <div class="container">
+            <div class="row cards">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        <span class="section-title">Ноутбуки</span>
+                    </h1>
+                </div>
+                {% for product_image in products_images_laptops %}
+                    {% include 'landing/product_item.html' %}
                 {% endfor %}
 
             </div>
