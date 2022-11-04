@@ -23,9 +23,13 @@ html, body{
 
 /* section */
 .text-center{
-    margin-bottom: 40px;
-    margin-top: 20px;
-    background: #FFFFFF;
+    text-align: center;
+}
+
+.text-right{
+    margin-left: auto;
+    margin-right: 0;
+    float: right;
 }
 
 .section-title{
@@ -54,6 +58,8 @@ html, body{
 .card{
     flex-basis: 30%;
     margin-bottom: 20px;
+    background: transparent;
+    border: none;
 }
 
 .product-item{
@@ -146,6 +152,15 @@ html, body{
     color: #595959;
     font-size: 16px;
     line-height: 24px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.button:hover{
+    color: white;
+    background-color: #000;
 }
 
 .btn-success-add-cart{
@@ -232,6 +247,11 @@ html, body{
 .basket-items li{
     display: flex;
     justify-content: space-between;
+}
+
+.checkout-group{
+    display: flex;
+    flex-direction: column;
 }
 
 .hidden{

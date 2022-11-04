@@ -1,5 +1,8 @@
 from django.http import JsonResponse
-from .models import ProductInBasket
+from .models import *
+from django.shortcuts import render
+from . forms import CheckContactForm
+from django.contrib.auth.models import User
 
 def basket_adding(request):
     return_dict = dict()
@@ -37,3 +40,37 @@ def basket_adding(request):
 
     return JsonResponse(return_dict)
     
+
+def checkout(request):
+    order_accept = False
+    session_key = request.session.session_key
+    products_in_basket = ProductInBasket.objects.filter(is_active=True, session_key=session_key, order__isnull=True)
+    form = CheckContactForm(request.POST or None)
+    if request.POST:
+        print(request.POST)
+        if form.is_valid():
+            print("yes")
+            data = request.POST
+            phone = data['phone']
+            name = data.get('name', "1234")
+            user, created = User.objects.get_or_create(username=phone, defaults={'first_name' : name})
+
+            order = Order.objects.create(user = user, customer_name=name, customer_phone=phone, status_id=1)
+            
+            for name, value in data.items():
+                if name.startswith('product_in_basket_'):
+                    product_in_basket_id = name.split("product_in_basket_")[1]
+                    product_in_basket = ProductInBasket.objects.get(id=product_in_basket_id)
+
+                    product_in_basket.nmb = value
+                    product_in_basket.order = order
+                    product_in_basket.save(force_update=True)
+
+                    ProductOrder.objects.create(product=product_in_basket.product, nmb=int(product_in_basket.nmb),
+                                                    price_per_item=product_in_basket.price_per_item, 
+                                                    total_price=product_in_basket.total_price, 
+                                                    order=order)
+            order_accept = True
+        else:
+            print("no")
+    return render(request, 'orders/checkout.html', locals())

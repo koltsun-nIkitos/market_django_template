@@ -82,6 +82,26 @@ $(document).ready(function(){
         product_id = $(this).data("product_id")
         nmb = 0;
         basketUpdating(product_id, nmb, is_delete=true)
-    })
+    });
+
+    function caculatingBasketAmount(){
+        var total_order_amount = 0
+        $('.total-product-in-baset-amount').each(function(){
+            total_order_amount += parseFloat($(this).text());
+        });
+        $('#total_order_amount').text(total_order_amount.toFixed(2));
+        $('#total_order_amount_basket').text(total_order_amount.toFixed(2) + " руб.");
+    };
+
+    $(document).on('change', '.product-in-basket-nmb', function(){
+        var current_nmb = $(this).val();
+        var current_tr = $(this).closest('tr');
+        var current_price = parseFloat(current_tr.find('.product-price').text()).toFixed(2);
+        var total_amount = parseFloat(current_nmb * current_price).toFixed(2);
+        current_tr.find('.total-product-in-baset-amount').text(total_amount);
+        caculatingBasketAmount();
+    });
+
+    caculatingBasketAmount();
 
 });
